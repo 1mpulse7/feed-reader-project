@@ -106,20 +106,25 @@ $(function() {
        * Remember, loadFeed() is asynchronous.
        */
        const feed = document.querySelector('.feed');
-       const feedArray = [];
+       const feedArrayOne = [];
+       const feedArrayTwo = [];
 
        beforeEach(function(done) {
-         loadFeed(0);
-         Array.from(feed.children).forEach(function(entry) {
-           feedArray.push(entry.innerText);
+         loadFeed(0, function() {
+           Array.from(feed.children).forEach(function(entry) {
+             feedArrayOne.push(entry.innerText);
+           })
          })
-         loadFeed(1, done)
-       })
+         loadFeed(1, function() {
+           Array.from(feed.children).forEach(function(entry) {
+             feedArrayTwo.push(entry.innerText);
+           })
+         })
+         done();
+       });
 
        it('content changes', function() {
-         Array.from(feed.children).forEach(function(entry, index) {
-           expect(entry.innerText !== feedArray[index]).toBe(true);
-         })
+         expect(feedArrayOne !== feedArrayTwo).toBe(true);
        })
 
     });
