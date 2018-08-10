@@ -8,6 +8,9 @@ to write tests for an already functioning site.
 In order to view the project, clone the repository on to your local machine
 and open up in your favorite browser. The Jasmine tests can be found at the bottom of the page.
 
+The code for the tests can be viewed on github. Or if you prefer on your local machine,
+can be opened up in your favorite text editor.
+
 # Resources Used
 For the asynchronous tests I read and used Mathew Cranford's article, so I could better understand
 what was happening.
