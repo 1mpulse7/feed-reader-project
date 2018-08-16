@@ -81,8 +81,10 @@ $(function() {
        })
 
        it('Loads Feed', function() {
-         const feed = document.querySelector('.feed');
-         expect(feed.children.length).toBeGreaterThan(0);
+         // have to use querySelectorAll, querySelector only looks for the first one,
+         // needed querySelectorAll to get all of the feed's children.
+         const feed = document.querySelectorAll('.feed .entry');
+         expect(feed.length).toBeGreaterThan(0);
        })
     });
 
@@ -100,12 +102,12 @@ $(function() {
          loadFeed(0, function() {
            Array.from(feed.children).forEach(function(entry) {
              feedArrayOne.push(entry.innerText);
-           })
-           loadFeed(1, function() {
-             Array.from(feed.children).forEach(function(entry) {
-               feedArrayTwo.push(entry.innerText);
+             loadFeed(1, function() {
+               Array.from(feed.children).forEach(function(entry) {
+                 feedArrayTwo.push(entry.innerText);
+               })
+               done();
              })
-             done();
            })
          })
        });
@@ -113,7 +115,5 @@ $(function() {
        it('content changes', function() {
          expect(feedArrayOne !== feedArrayTwo).toBe(true);
        })
-
     });
-
 }());

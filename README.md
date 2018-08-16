@@ -16,3 +16,5 @@ For the asynchronous tests I read and used Mathew Cranford's article, so I could
 what was happening.
 
 callbackhell.com to better understand callbacks, and asynchronous programming.
+
+Recieved help from slack members for final push on last tests
